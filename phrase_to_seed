@@ -3,5 +3,8 @@ from mnemonic import Mnemonic
 from binascii import hexlify, unhexlify
 import sys
 
+passphrase = ''
+if len(sys.argv) > 1:
+    passphrase = sys.argv[1]
 phrase = sys.stdin.readline().strip()
-print hexlify(Mnemonic.to_seed(phrase, passphrase = 'TREZOR'))
+print hexlify(Mnemonic.to_seed(phrase, passphrase = passphrase))
